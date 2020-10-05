@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+    .login {
+      top: 20%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <h1>Diabetes Miletus Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}" method="post">
+      <input type="text" name="preg" placeholder="preg" required="required" value="1">
+      <input type="text" name="plas" placeholder="plas" required="required" value="85">
+      <input type="text" name="pres" placeholder="pres" required="required" value="66">
+      <input type="text" name="skin" placeholder="skin" required="required" value="29">
+      <input type="text" name="test" placeholder="test" required="required" value="0">
+      <input type="text" name="mass" placeholder="mass" required="required" value="26.6">
+      <input type="text" name="pedi " placeholder="pedi " required="required" value="0.351">
+      <input type="text" name="age" placeholder="age" required="required" value="31">
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict
+      </button>
+
+
+    </form>
+
+    <br>
+    <br>
+
+    <div class=" popup" onclick="myFunction()">Click for viewing Prediction Result
+      <span class=" popuptext" id="myPopup">{{ prediction_text }}</span>
+    </div>
+    <!-- {{ prediction_text }} -->
+
+  </div>
+
+
+</body>
+
+<script>
+  // When the user clicks on <div>, open the popup
+  function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
+</script>
+
+</html>
